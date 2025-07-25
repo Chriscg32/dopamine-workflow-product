@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dopamine Workflow - ADHD Task System</title>
+    <meta name="description" content="Finally, a productivity system built for ADHD brains. Start in 2 minutes, no overwhelm.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #2d3748;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.2em;
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 36px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            margin: 10px 5px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button.secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .features {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2d3748;
+            font-size: 1.5em;
+        }
+        
+        .feature-list {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .feature-item {
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            font-size: 0.95em;
+        }
+        
+        .pricing {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .price {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        
+        .guarantee {
+            background: #e6fffa;
+            color: #234e52;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        
+        .testimonial {
+            background: #f7fafc;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            font-style: italic;
+            border-left: 4px solid #667eea;
+            font-size: 0.95em;
+        }
+        
+        .urgency {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .faq {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2d3748;
+        }
+        
+        .faq-answer {
+            color: #4a5568;
+            font-size: 0.9em;
+        }
+        
+        .demo-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .demo-button {
+            background: #48bb78;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .demo-link {
+            color: #667eea;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🧠 Finally, a productivity system that gets ADHD brains</h1>
+            <p class="subtitle">Start in 2 minutes. No overwhelm. No guilt. Just tasks that actually get done.</p>
+            
+            <a href="#pricing" class="cta-button">Get Instant Access - $9</a>
+            <a href="https://dopamineworkflow.notion.site" class="cta-button secondary" target="_blank" rel="noopener">Try Free Demo</a>
+        </div>
+
+        <div class="testimonial">
+            "I literally have 47 unfinished to-do lists. This is the first system where I actually completed something without feeling overwhelmed. 3 sprints and I had my whole day sorted." - Sarah, diagnosed ADHD
+        </div>
+
+        <div class="features">
+            <h2>What makes this different</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <strong>📱 Works on your worst days</strong> - Voice tasks, one-tap sprints, offline mode
+                </div>
+                <div class="feature-item">
+                    <strong>🎆 No setup overwhelm</strong> - Pre-loaded examples, 2-minute start
+                </div>
+                <div class="feature-item">
+                    <strong>🚨 Emergency mode</strong> - "Bad brain day" button when everything feels impossible
+                </div>
+                <div class="feature-item">
+                    <strong>🎁 Instant dopamine</strong> - Celebrations after every sprint, no waiting
+                </div>
+                <div class="feature-item">
+                    <strong>🔄 Forgiveness built-in</strong> - Missed days? Just start fresh, no guilt
+                </div>
+                <div class="feature-item">
+                    <strong>⏰ Flexible timing</strong> - 10/15/20/25 min options, pause anytime
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>See it in action</h2>
+            <p>Try the free demo template right now:</p>
+            <a href="https://dopamineworkflow.notion.site" class="demo-button" target="_blank" rel="noopener">📈 Open Demo Template
+            </a>
+            <p><small>No signup required. Just click and start using.</small></p>
+        </div>
+
+        <div class="faq">
+            <h2>Questions ADHD brains actually ask</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">"What if I forget to use it?"</div>
+                <div class="faq-answer">Built-in forgiveness. No streaks, no shame. Just open it when you remember and start fresh.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">"What if 20 minutes feels too long?"</div>
+                <div class="faq-answer">Choose 10, 15, or 25 minutes. There's even a "flow mode" that doesn't force breaks.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">"What if I get overwhelmed setting it up?"</div>
+                <div class="faq-answer">It comes pre-loaded with examples. Literally just change the task names and press start.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">"What if I'm having a really bad ADHD day?"</div>
+                <div class="faq-answer">Emergency mode gives you just ONE task with no timer. Do what you can, celebrate what you did.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">"What if it doesn't work on my phone?"</div>
+                <div class="faq-answer">Works offline. Voice memos save locally. Even a simple checklist works if Notion is slow.</div>
+            </div>
+        </div>
+
+        <div id="pricing" class="pricing">
+            <h2>Simple pricing, no surprises</h2>
+            <div class="price">$9</div>
+            <p><strong>Launch special</strong> - usually $29</p>
+            <p>Includes template + bonus vault + lifetime updates</p>
+            <a href="https://payhip.com/b/dopamineworkflow-launch" class="cta-button" target="_blank" rel="noopener">Get it now - $9</a>
+        </div>
+
+        <div class="guarantee">
+            <strong>🛡️ 30-day money-back guarantee</strong><br>
+            If it doesn't help you get more done with less stress, get a full refund. No questions asked.
+        </div>
+
+        <div class="urgency">
+            <strong>Launch special ends soon</strong><br>
+            After that, goes back to $29. Grab it while it's $9.
+        </div>
+    </div>
+
+    <script>
+        // Simple countdown timer
+        function updateCountdown() {
+            const launchDate = new Date();
+            launchDate.setDate(launchDate.getDate() + 3);
+            launchDate.setHours(23, 59, 59, 999);
+            
+            const now = new Date().getTime();
+            const distance = launchDate.getTime() - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            
+            const timerElements = document.querySelectorAll('.urgency');
+            timerElements.forEach(el => {
+                if (distance > 0) {
+                    el.innerHTML = `<strong>Launch special ends in ${days}d ${hours}h ${minutes}m</strong><br>After that, goes back to $29. Grab it while it's $9.`;
+                } else {
+                    el.innerHTML = '<strong>Launch special has ended</strong><br>Back to regular price of $29.';
+                }
+            });
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+    </script>
+</body>
+</html>

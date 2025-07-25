@@ -1,0 +1,24 @@
+{
+  "name": "adhd-sprint-zero-cost",
+  "version": "1.0.0",
+  "description": "Zero-cost ADHD task system - completely free, works offline, no signup required",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "serve": "npx serve . -p 8000",
+    "deploy": "echo 'Deploy to Netlify: drag & drop this folder to netlify.com'",
+    "test": "echo 'Open index.html in browser to test'"
+  },
+  "keywords": ["ADHD", "productivity", "free", "offline", "zero-cost", "neurodivergent"],
+  "author": "ADHD Creator",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adhdcreator/adhd-sprint"
+  },
+  "homepage": "https://adhd-sprint.netlify.app",
+  "bugs": {
+    "url": "https://github.com/adhdcreator/adhd-sprint/issues"
+  }
+}

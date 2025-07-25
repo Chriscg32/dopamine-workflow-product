@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADHD Sprint - Zero Cost Task System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #2d3748;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+        
+        .header p {
+            color: #4a5568;
+            font-size: 0.9em;
+        }
+        
+        .input-section {
+            margin-bottom: 20px;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .timer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .timer-display {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        
+        .timer-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .timer-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+        
+        .start-btn { background: #48bb78; color: white; }
+        .pause-btn { background: #ed8936; color: white; }
+        .reset-btn { background: #e53e3e; color: white; }
+        
+        .tasks {
+            margin-top: 30px;
+        }
+        
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f7fafc;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .task-info h3 {
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+        
+        .task-info p {
+            font-size: 0.8em;
+            color: #4a5568;
+        }
+        
+        .task-status {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+        
+        .status-ready { background: #e2e8f0; color: #4a5568; }
+        .status-active { background: #fef3c7; color: #92400e; }
+        .status-done { background: #d1fae5; color: #065f46; }
+        
+        .emergency-mode {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        .emergency-btn {
+            background: #c53030;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        
+        .celebration {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            border-radius: 15px;
+            margin: 20px 0;
+            display: none;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .stat {
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 0.8em;
+            color: #4a5568;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 ADHD Sprint</h1>
+            <p>Zero-cost task system built for ADHD brains</p>
+        </div>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="taskInput">What needs doing?</label>
+                <input type="text" id="taskInput" placeholder="e.g., Take morning meds">
+            </div>
+            
+            <div class="input-group">
+                <label for="timeSelect">How long?</label>
+                <select id="timeSelect">
+                    <option value="5">5 min (tiny task)</option>
+                    <option value="10">10 min (quick win)</option>
+                    <option value="15">15 min (medium effort)</option>
+                    <option value="25">25 min (deep work)</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="rewardInput">Reward yourself with?</label>
+                <input type="text" id="rewardInput" placeholder="e.g., Coffee break, YouTube video">
+            </div>
+            
+            <button class="btn" onclick="addTask()">Add Sprint</button>
+        </div>
+        
+        <div class="emergency-mode">
+            <div>🚨 Bad brain day?</div>
+            <button class="emergency-btn" onclick="emergencyMode()">Emergency Mode</button>
+        </div>
+        
+        <div class="timer">
+            <div class="timer-display" id="timerDisplay">25:00</div>
+            <div class="timer-controls">
+                <button class="timer-btn start-btn" onclick="startTimer()">Start</button>
+                <button class="timer-btn pause-btn" onclick="pauseTimer()">Pause</button>
+                <button class="timer-btn reset-btn" onclick="resetTimer()">Reset</button>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="todayTasks">0</div>
+                <div class="stat-label">Today's Tasks</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="completedTasks">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="streakDays">0</div>
+                <div class="stat-label">Streak</div>
+            </div>
+        </div>
+        
+        <div class="tasks">
+            <h3>Your Sprints</h3>
+            <div id="tasksList"></div>
+        </div>
+        
+        <div class="celebration" id="celebration">
+            <h2>🎉 Sprint Complete!</h2>
+            <p id="celebrationText">Great job! Time for your reward.</p>
+        </div>
+    </div>
+
+    <script>
+        let tasks = JSON.parse(localStorage.getItem('adhdTasks') || '[]');
+        let currentTimer = null;
+        let timeLeft = 0;
+        
+        function addTask() {
+            const task = document.getElementById('taskInput').value;
+            const time = document.getElementById('timeSelect').value;
+            const reward = document.getElementById('rewardInput').value;
+            
+            if (!task) {
+                alert('Please enter a task!');
+                return;
+            }
+            
+            const newTask = {
+                id: Date.now(),
+                task: task,
+                time: parseInt(time),
+                reward: reward,
+                status: 'ready',
+                date: new Date().toDateString()
+            };
+            
+            tasks.unshift(newTask);
+            localStorage.setItem('adhdTasks', JSON.stringify(tasks));
+            
+            document.getElementById('taskInput').value = '';
+            document.getElementById('rewardInput').value = '';
+            
+            renderTasks();
+            updateStats();
+        }
+        
+        function emergencyMode() {
+            const emergencyTask = prompt("What's the ONE thing that would make today okay?");
+            if (emergencyTask) {
+                const newTask = {
+                    id: Date.now(),
+                    task: emergencyTask,
+                    time: 0,
+                    reward: "You did the thing! 🎉",
+                    status: 'emergency',
+                    date: new Date().toDateString()
+                };
+                
+                tasks.unshift(newTask);
+                localStorage.setItem('adhdTasks', JSON.stringify(tasks));
+                renderTasks();
+                updateStats();
+                
+                if (confirm(`Emergency task: "${emergencyTask}" - Mark as done?`)) {
+                    completeTask(newTask.id);
+                }
+            }
+        }
+        
+        function startTimer() {
+            if (currentTimer) return;
+            
+            const readyTask = tasks.find(t => t.status === 'ready');
+            if (!readyTask) {
+                alert('Add a task first!');
+                return;
+            }
+            
+            timeLeft = readyTask.time * 60;
+            document.getElementById('timerDisplay').textContent = 
+                `${readyTask.time}:00`;
+            
+            readyTask.status = 'active';
+            localStorage.setItem('adhdTasks', JSON.stringify(tasks));
+            renderTasks();
+            
+            currentTimer = setInterval(() => {
+                timeLeft--;
+                const mins = Math.floor(timeLeft / 60);
+                const secs = timeLeft % 60;
+                document.getElementById('timerDisplay').textContent = 
+                    `${mins}:${secs.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(currentTimer);
+                    currentTimer = null;
+                    completeTask(readyTask.id);
+                }
+            }, 1000);
+        }
+        
+        function pauseTimer() {
+            if (currentTimer) {
+                clearInterval(currentTimer);
+                currentTimer = null;
+            }
+        }
+        
+        function resetTimer() {
+            pauseTimer();
+            timeLeft = 0;
+            document.getElementById('timerDisplay').textContent = '25:00';
+            
+            tasks.forEach(task => {
+                if (task.status === 'active') {
+                    task.status = 'ready';
+                }
+            });
+            localStorage.setItem('adhdTasks', JSON.stringify(tasks));
+            renderTasks();
+        }
+        
+        function completeTask(taskId) {
+            const task = tasks.find(t => t.id === taskId);
+            if (task) {
+                task.status = 'done';
+                localStorage.setItem('adhdTasks', JSON.stringify(tasks));
+                renderTasks();
+                updateStats();
+                
+                document.getElementById('celebrationText').textContent = 
+                    `Great job! Time for: ${task.reward}`;
+                document.getElementById('celebration').style.display = 'block';
+                
+                setTimeout(() => {
+                    document.getElementById('celebration').style.display = 'none';
+                }, 5000);
+            }
+        }
+        
+        function renderTasks() {
+            const tasksList = document.getElementById('tasksList');
+            const todayTasks = tasks.filter(t => t.date === new Date().toDateString());
+            
+            if (todayTasks.length === 0) {
+                tasksList.innerHTML = '<p style="text-align: center; color: #4a5568;">No tasks yet. Add your first sprint!</p>';
+                return;
+            }
+            
+            tasksList.innerHTML = todayTasks.map(task => `
+                <div class="task-item">
+                    <div class="task-info">
+                        <h3>${task.task}</h3>
+                        <p>${task.time}min • ${task.reward}</p>
+                    </div>
+                    <div class="task-status status-${task.status}">
+                        ${task.status}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function updateStats() {
+            const todayTasks = tasks.filter(t => t.date === new Date().toDateString());
+            const completed = todayTasks.filter(t => t.status === 'done').length;
+            
+            // Simple streak calculation
+            const uniqueDays = [...new Set(tasks.map(t => t.date))].length;
+            
+            document.getElementById('todayTasks').textContent = todayTasks.length;
+            document.getElementById('completedTasks').textContent = completed;
+            document.getElementById('streakDays').textContent = uniqueDays;
+        }
+        
+        // Initialize
+        renderTasks();
+        updateStats();
+        
+        // Auto-save and load
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('adhdTasks', JSON.stringify(tasks));
+        });
+    </script>
+</body>
+</html>
