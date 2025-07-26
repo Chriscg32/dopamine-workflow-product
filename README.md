@@ -1,180 +1,102 @@
-# 🧠 ADHD Sprint - Zero-Cost Task System
+# 🧠 ADHD Dopamine Sprint - Zero-Cost Productivity System
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/deploy-status)](https://app.netlify.com/sites/adhd-sprint/deploys)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/YOUR_USERNAME/adhd-sprint-zero-cost/pulls)
+**Finally, a productivity system that gets ADHD brains.** Completely free, works offline, no signup required.
 
-> **Finally, a productivity system that gets ADHD brains. Completely free, works offline, no signup required.**
+## 🚀 **Live Demo**
 
-## 🚀 Live Demo
+**🎯 [Try the App Now](https://chriscg32.github.io/dopamine-workflow-product/app.html)**
 
-**Try it now:** [adhd-sprint.netlify.app](https://adhd-sprint.netlify.app)
+**📱 [View Landing Page](https://chriscg32.github.io/dopamine-workflow-product/)**
 
-**Or open locally:** Just open `app.html` in your browser!
+## ✨ **What Makes This Different**
 
-## ✨ Features
+- **🎯 Zero setup** - open and use in 30 seconds
+- **📱 Works offline** - no internet required
+- **🗣️ Voice input** - speak your tasks
+- **🚨 Emergency mode** - for bad brain days
+- **🎉 Instant celebrations** - dopamine hits after every sprint
+- **📊 23KB total** - loads instantly on mobile
+- **💰 Completely free** - no signup, no ads, no hidden costs
 
-### 🎯 Core Functionality
-- **Zero setup** - Open and start using immediately
-- **Works offline** - No internet connection required
-- **Mobile responsive** - Works on phones, tablets, desktop
-- **Local storage** - Your data stays on your device
-- **Emergency mode** - For bad brain days
-- **Celebrations** - Instant dopamine hits after completion
+## 🛠️ **How to Use**
 
-### ⏱️ Sprint Options
-- **5 min** - Tiny tasks
-- **10 min** - Quick wins
-- **15 min** - Medium effort
-- **25 min** - Deep work
-
-### 🚨 Emergency Mode
-When everything feels impossible, emergency mode gives you just ONE task with no timer pressure.
-
-## 📱 Quick Start
-
-### Option 1: Use Immediately (0 seconds)
-1. Open `app.html` in any browser
-2. Start using immediately
-3. Works offline!
-
-### Option 2: Deploy to Netlify (30 seconds)
-1. Go to [netlify.com](https://netlify.com)
-2. Drag & drop this folder
-3. Get your own URL
-4. Share with ADHD community!
-
-### Option 3: GitHub Pages (2 minutes)
-1. Fork this repository
-2. Go to Settings → Pages
-3. Select main branch
-4. Live at `yourusername.github.io/adhd-sprint-zero-cost`
-
-## 🎯 How to Use
-
-### Adding Tasks
-1. Type what needs doing
-2. Choose sprint time (5-25 min)
-3. Set your reward
-4. Click "Add Sprint"
-
-### Starting Sprints
-1. Click "Start" to begin timer
-2. Work until timer ends
-3. Get celebration + reward reminder
-4. Mark complete and celebrate!
-
-### Emergency Mode
-1. Click "Emergency Mode"
-2. Enter ONE task that would make today okay
-3. No timer pressure - just do it
-4. Celebrate completion!
-
-## 📊 Built-in Analytics
-
-The app tracks (locally, no data sent anywhere):
-- Daily task completion
-- Sprint success rate
-- Emergency mode usage
-- Streak tracking
-
-## 🛠️ Technical Details
-
-### Zero Dependencies
-- Pure HTML/CSS/JavaScript
-- No frameworks
-- No external libraries
-- No build process
-
-### Browser Support
-- Chrome (recommended)
-- Firefox
-- Safari
-- Edge
-- Mobile browsers
-
-### Storage
-- LocalStorage for persistence
-- No cloud sync (privacy-focused)
-- Data stays on your device
-
-## 🚀 Deployment
-
-### Netlify (Recommended)
-```bash
-# One command deployment
-npx netlify deploy --prod --dir .
+### **Option 1: Web App (Recommended)**
+```
+Open → Add task → Start sprint → Get dopamine hit
 ```
 
-### Manual Deployment
-1. Upload files to any static host
-2. Works on Netlify, Vercel, GitHub Pages, etc.
-3. No server setup required
+### **Option 2: Notion Template**
+- **[One-Click Import](NOTION-SETUP.md)** - duplicate and use
+- **[Manual Setup](NOTION-SETUP.md)** - 5 minutes
 
-## 🤝 Contributing
+### **Option 3: Download & Use Offline**
+1. Download `app.html`
+2. Open in any browser
+3. Works completely offline
 
-We welcome contributions from the ADHD community!
+## 🎯 **Features Built for ADHD Brains**
 
-### How to Contribute
-1. Fork this repository
-2. Create a feature branch
-3. Make your changes
-4. Test on mobile
-5. Submit a pull request
+| Feature | Why ADHD Brains Love It |
+|---------|------------------------|
+| **2-15 min sprints** | Perfect attention span match |
+| **Emergency button** | When everything feels impossible |
+| **Voice input** | No typing overwhelm |
+| **Instant rewards** | Dopamine hits keep you going |
+| **Forgiveness mode** | Missed days? Just start fresh |
+| **Offline first** | Works on planes, subways, anywhere |
 
-### Ideas Welcome
-- New sprint durations
-- Better celebrations
-- Accessibility improvements
-- Mobile optimizations
+## 📱 **Mobile Optimized**
 
-## 📈 Roadmap
+- **iPhone:** Add to home screen for app-like experience
+- **Android:** Works perfectly in any browser
+- **Desktop:** Clean, focused interface
 
-### Version 1.1 (Coming Soon)
-- [ ] Dark mode toggle
-- [ ] Sound notifications
-- [ ] Task categories
-- [ ] Export to CSV
+## 🚀 **Zero-Cost Deployment**
 
-### Version 1.2 (Community Driven)
-- [ ] Share achievements
-- [ ] Community challenges
-- [ ] Custom rewards
-- [ ] Backup/restore
+### **GitHub Pages (Free)**
+- **Your site:** https://chriscg32.github.io/dopamine-workflow-product
+- **Cost:** $0 forever
+- **Setup:** Already done!
 
-## 🏆 Success Stories
+### **Netlify (Alternative)**
+1. Go to [netlify.com](https://netlify.com)
+2. Drag & drop the entire folder
+3. Get custom URL in 30 seconds
 
-> "I literally have 47 unfinished to-do lists. This is the first system where I actually completed something without feeling overwhelmed. 3 sprints and I had my whole day sorted." - Sarah, diagnosed ADHD
+### **Local Use**
+- Just open `app.html` in any browser
+- Works completely offline
 
-> "The emergency mode saved me during a meltdown. Just having one simple task to focus on made everything manageable." - Alex, ADHD + Autism
+## 🧠 **Built by ADHD Brain, for ADHD Brains**
 
-> "Built by someone who actually gets it. The celebrations feel genuine, not patronizing." - Jordan, ADHD
+**Creator:** Someone who has 47 unfinished to-do lists and finally found something that works.
 
-## 📞 Support
+**Philosophy:** If it takes more than 2 minutes to set up, ADHD brains won't use it.
 
-### Community Support
-- **Reddit:** [r/ADHDsprint](https://reddit.com/r/ADHDsprint)
-- **Discord:** [ADHD Sprint Community](https://discord.gg/adhd-sprint)
-- **Twitter:** [@ADHDSprint](https://twitter.com/ADHDSprint)
+## 📊 **Technical Details**
 
-### Direct Support
-- **Email:** hello@adhdsprint.com
-- **Issues:** [GitHub Issues](https://github.com/YOUR_USERNAME/adhd-sprint-zero-cost/issues)
+- **Size:** 23KB total (smaller than most images)
+- **Dependencies:** Zero
+- **Browser support:** All modern browsers
+- **Data storage:** Local (stays on your device)
+- **Privacy:** No tracking, no data collection
 
-## 📄 License
+## 🤝 **Community & Support**
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- **Issues:** [GitHub Issues](https://github.com/Chriscg32/dopamine-workflow-product/issues)
+- **Questions:** hello@adhdsprint.com
+- **Share:** Use anywhere, no attribution required
 
-## 🙏 Acknowledgments
+## 🎯 **Quick Start**
 
-- Built by someone with ADHD for the ADHD community
-- Inspired by the struggles of 47 unfinished to-do lists
-- Thanks to the ADHD community for feedback and testing
+**Right now:**
+1. **[Open the app](https://chriscg32.github.io/dopamine-workflow-product/app.html)**
+2. **Add one small task**
+3. **Start a 5-minute sprint**
+4. **Celebrate your win!**
 
 ---
 
-**Built with ❤️ for ADHD brains everywhere.**
+**💡 Pro tip:** Start with 2-minute sprints. Your brain will thank you.
 
-**Deploy your own:** Just fork this repo and you're live!
-
-**Questions?** Open an issue or email hello@adhdsprint.com
+**🧠 ADHD brains unite!** This actually works.

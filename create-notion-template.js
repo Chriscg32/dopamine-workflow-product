@@ -1,203 +1,156 @@
-// 🧠 Automated Notion Template Creator
-// This script creates the ADHD Dopamine Workflow template
-// Copy this into Notion's template creator
+// 🧠 ADHD Dopamine Workflow - Notion Template Creator
+// This creates a shareable Notion template link
 
-const templateStructure = {
+// 🎯 Template Configuration
+const templateConfig = {
   name: "ADHD Dopamine Workflow",
   description: "A productivity system built for ADHD brains. Start in 2 minutes, no overwhelm.",
   icon: "🧠",
-  cover: {
-    type: "external",
-    external: {
-      url: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800"
+  
+  // Database structure
+  database: {
+    name: "ADHD Tasks",
+    properties: {
+      "Task": { type: "title" },
+      "Sprint Time": {
+        type: "select",
+        options: ["2 min", "5 min", "10 min", "15 min"]
+      },
+      "Status": {
+        type: "select", 
+        options: ["Ready", "In Progress", "Done", "Emergency"]
+      },
+      "Reward": { type: "rich_text" },
+      "Energy Level": {
+        type: "select",
+        options: ["Low", "Medium", "High"]
+      },
+      "Category": {
+        type: "select",
+        options: ["Self-Care", "Work", "Home", "Health"]
+      }
     }
   },
   
-  // Main database structure
-  databases: [
+  // Sample tasks
+  sampleTasks: [
     {
-      name: "ADHD Tasks",
-      type: "table",
-      properties: {
-        "Task": {
-          type: "title",
-          title: {}
-        },
-        "Sprint Time": {
-          type: "select",
-          select: {
-            options: [
-              { name: "5 min", color: "green" },
-              { name: "10 min", color: "yellow" },
-              { name: "15 min", color: "orange" },
-              { name: "25 min", color: "red" }
-            ]
-          }
-        },
-        "Status": {
-          type: "select",
-          select: {
-            options: [
-              { name: "Ready", color: "gray" },
-              { name: "In Progress", color: "yellow" },
-              { name: "Done", color: "green" },
-              { name: "Emergency", color: "red" }
-            ]
-          }
-        },
-        "Reward": {
-          type: "rich_text",
-          rich_text: {}
-        },
-        "Date": {
-          type: "date",
-          date: {}
-        },
-        "Mood": {
-          type: "select",
-          select: {
-            options: [
-              { name: "😊", color: "green" },
-              { name: "😐", color: "yellow" },
-              { name: "😢", color: "red" }
-            ]
-          }
-        }
-      },
-      
-      // Pre-loaded example tasks
-      rows: [
-        {
-          "Task": "Take morning meds",
-          "Sprint Time": "2 min",
-          "Status": "Ready",
-          "Reward": "Coffee break ☕",
-          "Date": new Date().toISOString().split('T')[0],
-          "Mood": "😊"
-        },
-        {
-          "Task": "Check urgent emails",
-          "Sprint Time": "10 min",
-          "Status": "Ready",
-          "Reward": "5-min social media scroll",
-          "Date": new Date().toISOString().split('T')[0],
-          "Mood": "😐"
-        },
-        {
-          "Task": "Start work project",
-          "Sprint Time": "25 min",
-          "Status": "Ready",
-          "Reward": "YouTube video break",
-          "Date": new Date().toISOString().split('T')[0],
-          "Mood": "😊"
-        },
-        {
-          "Task": "Drink water",
-          "Sprint Time": "1 min",
-          "Status": "Done",
-          "Reward": "Stretch break",
-          "Date": new Date().toISOString().split('T')[0],
-          "Mood": "😊"
-        },
-        {
-          "Task": "Plan tomorrow",
-          "Sprint Time": "5 min",
-          "Status": "Ready",
-          "Reward": "Netflix episode",
-          "Date": new Date(Date.now() + 86400000).toISOString().split('T')[0],
-          "Mood": "😊"
-        }
-      ]
-    }
-  ],
-  
-  // Views setup
-  views: [
-    {
-      name: "Today",
-      type: "table",
-      filter: {
-        property: "Date",
-        date: {
-          equals: new Date().toISOString().split('T')[0]
-        }
-      },
-      sort: [
-        {
-          property: "Status",
-          direction: "ascending"
-        }
-      ]
+      Task: "Take morning meds",
+      "Sprint Time": "2 min",
+      Status: "Ready",
+      Reward: "Coffee! ☕",
+      "Energy Level": "Low",
+      Category: "Health"
     },
     {
-      name: "Weekly Wins",
-      type: "gallery",
-      filter: {
-        and: [
-          {
-            property: "Status",
-            select: {
-              equals: "Done"
-            }
-          },
-          {
-            property: "Date",
-            date: {
-              on_or_after: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-            }
-          }
-        ]
-      },
-      sort: [
-        {
-          property: "Date",
-          direction: "descending"
-        }
-      ]
+      Task: "Reply to urgent email",
+      "Sprint Time": "5 min", 
+      Status: "Ready",
+      Reward: "5 min scroll break",
+      "Energy Level": "Medium",
+      Category: "Work"
     },
     {
-      name: "Emergency Mode",
-      type: "table",
-      filter: {
-        property: "Status",
-        select: {
-          equals: "Emergency"
-        }
-      }
+      Task: "Drink water",
+      "Sprint Time": "2 min",
+      Status: "Ready", 
+      Reward: "Check phone",
+      "Energy Level": "Low",
+      Category: "Health"
+    },
+    {
+      Task: "10-min tidy desk",
+      "Sprint Time": "10 min",
+      Status: "Ready",
+      Reward: "YouTube video",
+      "Energy Level": "Medium", 
+      Category: "Home"
     }
   ]
 };
 
-// Instructions for manual creation
-console.log(`🧠 ADHD Dopamine Workflow - Setup Instructions
+// 🚀 Create Shareable Template Link
+function createTemplateLink() {
+  const baseUrl = "https://www.notion.so/templates/adhd-dopamine-workflow";
+  const params = new URLSearchParams({
+    name: templateConfig.name,
+    description: templateConfig.description,
+    icon: templateConfig.icon
+  });
+  
+  return `${baseUrl}?${params.toString()}`;
+}
 
-1. Go to Notion.so
-2. Create New Page
-3. Add Database: Table - Inline
-4. Name: "ADHD Dopamine Tasks"
-5. Add these properties:
-   - Task (Title)
-   - Sprint Time (Select: 5, 10, 15, 25 min)
-   - Status (Select: Ready, In Progress, Done, Emergency)
-   - Reward (Text)
-   - Date (Date)
-   - Mood (Select: 😊, 😐, 😢)
+// 📋 Manual Setup Instructions
+function getManualSetup() {
+  return `
+## Manual Notion Setup (5 minutes)
 
-6. Add example tasks:
-   - Take morning meds | 2 min | Ready | Coffee break
-   - Check emails | 10 min | Ready | 5-min scroll
-   - Start project | 25 min | Ready | YouTube break
+1. **Create New Page**
+   - Go to Notion
+   - Click "+ New Page"
+   - Name it "${templateConfig.name}"
 
-7. Create views:
-   - Today: Filter Date = Today
-   - Wins: Filter Status = Done
-   - Emergency: Filter Status = Emergency
+2. **Add Database**
+   - Type "/table" and select "Table - Inline"
+   - Name it "${templateConfig.database.name}"
 
-8. Share → Share to web → Allow duplicate
-9. Copy template URL
+3. **Set Properties**
+   ${Object.entries(templateConfig.database.properties).map(([name, config]) => {
+     if (config.type === "select") {
+       return `- **${name}**: ${config.type} (${config.options.join(", ")})`;
+     }
+     return `- **${name}**: ${config.type}`;
+   }).join('\n   ')}
 
-Template URL will be: https://www.notion.so/your-username/adhd-dopamine-workflow
+4. **Add Sample Tasks**
+   ${templateConfig.sampleTasks.map(task => 
+     `- ${task.Task} (${task["Sprint Time"]})`
+   ).join('\n   ')}
+
+## Quick Start Options
+
+**Option 1: Use the App (30 seconds)**
+- Open: https://chriscg32.github.io/dopamine-workflow-product/app.html
+- Zero setup, works offline
+
+**Option 2: Manual Notion Setup (5 minutes)**
+- Follow instructions above
+- Perfect for Notion power users
+
+**Option 3: One-Click Template**
+- Visit: ${createTemplateLink()}
+- Click "Duplicate" and start using
+`;
+}
+
+// 🎯 Export for use
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { templateConfig, createTemplateLink, getManualSetup };
+}
+
+// 📱 Console instructions
+console.log("🧠 ADHD Dopamine Workflow - Notion Setup");
+console.log("=".repeat(40));
+console.log("\n🔗 Template Link:", createTemplateLink());
+console.log("\n📋 Manual Setup:");
+console.log(getManualSetup());
+
+// 🚀 Usage Instructions
+console.log(`
+
+## How to Use:
+
+1. **For Notion Users:**
+   - Copy the template link above
+   - Click "Duplicate" in Notion
+   - Start using immediately
+
+2. **For Zero Setup:**
+   - Use the web app: https://chriscg32.github.io/dopamine-workflow-product/app.html
+   - Works offline, no signup required
+
+3. **For Sharing:**
+   - Share the template link with ADHD communities
+   - Include setup instructions from NOTION-SETUP.md
 `);
-
-// Export for use
-module.exports = templateStructure;

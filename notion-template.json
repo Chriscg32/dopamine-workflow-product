@@ -1,0 +1,153 @@
+{
+  "object": "page",
+  "parent": {
+    "type": "page_id",
+    "page_id": "PARENT_PAGE_ID"
+  },
+  "properties": {
+    "title": [
+      {
+        "type": "text",
+        "text": {
+          "content": "🧠 ADHD Dopamine Workflow"
+        }
+      }
+    ]
+  },
+  "children": [
+    {
+      "object": "block",
+      "type": "heading_1",
+      "heading_1": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🎯 ADHD Dopamine Dashboard"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Your ADHD-friendly productivity system. Start in 2 minutes, no overwhelm."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "database",
+      "database": {
+        "title": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🎯 ADHD Tasks"
+            }
+          }
+        ],
+        "properties": {
+          "Task": {
+            "title": {}
+          },
+          "Sprint Time": {
+            "select": {
+              "options": [
+                {
+                  "name": "2 min",
+                  "color": "green"
+                },
+                {
+                  "name": "5 min",
+                  "color": "yellow"
+                },
+                {
+                  "name": "10 min",
+                  "color": "orange"
+                },
+                {
+                  "name": "15 min",
+                  "color": "red"
+                }
+              ]
+            }
+          },
+          "Status": {
+            "select": {
+              "options": [
+                {
+                  "name": "Ready",
+                  "color": "gray"
+                },
+                {
+                  "name": "In Progress",
+                  "color": "yellow"
+                },
+                {
+                  "name": "Done",
+                  "color": "green"
+                },
+                {
+                  "name": "Emergency",
+                  "color": "red"
+                }
+              ]
+            }
+          },
+          "Reward": {
+            "rich_text": {}
+          },
+          "Energy Level": {
+            "select": {
+              "options": [
+                {
+                  "name": "Low",
+                  "color": "red"
+                },
+                {
+                  "name": "Medium",
+                  "color": "yellow"
+                },
+                {
+                  "name": "High",
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          "Category": {
+            "select": {
+              "options": [
+                {
+                  "name": "Self-Care",
+                  "color": "purple"
+                },
+                {
+                  "name": "Work",
+                  "color": "blue"
+                },
+                {
+                  "name": "Home",
+                  "color": "orange"
+                },
+                {
+                  "name": "Health",
+                  "color": "green"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}
